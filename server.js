@@ -18,6 +18,15 @@ app.get('/', (req, res) => {
     res.render("form");
 });
 
+app.get("/new", (req, res) => {
+    res.render("new");
+});
+
+app.post("/contact", (req, res) => {
+    console.log(req.body);
+    res.sendStatus(200);
+});
+
 app.post("/createuser", async (req, res) => {
     let { name, email, number } = req.body;
     await userModel.create({
