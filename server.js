@@ -24,14 +24,15 @@ app.get("/new", (req, res) => {
 });
 
 app.get("/calculate", (req, res) => {
-    res.render("calculate")
+    res.render("calculate", {data: null});
 });
 
 app.post("/calculatenode", async (req, res) => {
     try {
         const response = await axios.post("https://python-learning-web.onrender.com/getData", req.body);
-        res.send({'Received data': response.data});
-        console.log(response.data);
+        data = response.data
+        res.render("calculate", { data });
+        console.log(data);
     } catch (err) {
         console.error("Error while sending data: ", err.message);
         res.status(500).json({ error: "Failed to send data to Python server" });

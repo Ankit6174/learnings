@@ -25,7 +25,9 @@ def contact():
 def received_data():
     data = request.get_json()
     print("Received from node", data)
-    return jsonify({"status": "success", "received": data})
+    print('-'*30)
+    sum = int(data['a'])+int(data['b'])
+    return jsonify({"status": "success", "received": data, "sum": sum})
 
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))

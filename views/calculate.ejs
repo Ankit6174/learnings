@@ -11,6 +11,10 @@
         <input type="number" name="b"> <br>
         <input type="submit" value="Add"> <br>
     </form>
-    <h1>The sum of a and b is c</h1>
+    <% if (data) { %>
+        <h1>The sum of <%= data.received.a %> and <%= data.received.b %> is <%= data.sum %></h1>
+     <% } else { %>
+      <h2>Data is not received</h2>
+    <% } %>
 </body>
 </html>
