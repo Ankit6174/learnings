@@ -1,7 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');   
 const upload = require("./models/multer");
-const cloudinary = require("./models/cloudinary");
+// const cloudinary = require("./models/cloudinary");
+const getDocuments = require("./models/getDocuments");
 
 dotenv.config();
 
@@ -42,18 +43,26 @@ app.get('/', (req, res) => {
 // }
 
 app.post("/upload", upload.single("file"), async (req, res) => {
-  try {
-    const result = await cloudinary.uploader.upload(req.file.path, {
-      folder: "uploads",
-    });
+//   try {
+//     const result = await cloudinary.uploader.upload(req.file.path, {
+//       folder: "uploads",
+//     });
 
-    res.json({
-      success: true,
-      url: result.secure_url,
-    });
-  } catch (error) {
-    res.status(500).json({ error: error.message });
-  }
+//     let array_of_documents = await getDocuments(req.file.path);
+//     consolel.log(array_of_documents);
+//     res.json({
+//       success: true,
+//       url: result.secure_url,
+//     });
+//   } catch (error) {
+//     res.status(500).json({ error: error.message });
+//   }
+    try {
+        let array_of_documents = await getDocuments(req.file.path);
+        console.log(array_of_documents);
+    }  catch (error) {
+        res.status(500).json({ error: error.message });
+    }
 });
 
 app.listen(PORT, () => {
