@@ -8,6 +8,3 @@ def home():
         <h1>Hello!</h1>
         <p>Building & Testing app on same repository.</p>
     """)
-
-if __name__ == "__main__":
-    app.run(port=5000, debug=True)
