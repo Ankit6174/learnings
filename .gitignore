@@ -2,5 +2,7 @@ node_modules
 .env
 package-lock.json
 
-python-server/venv
+python-server/.venv
 python-server/__pycache__
+
+.vscode
